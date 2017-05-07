@@ -1,1 +1,1 @@
-web: gunicorn google_duckduckgo_twitter_search.wsgi.wsgi --log-file -
+web: gunicorn google_duckduckgo_twitter_search.wsgi --log-file -
