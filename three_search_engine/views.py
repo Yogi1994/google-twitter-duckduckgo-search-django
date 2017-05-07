@@ -68,8 +68,8 @@ def index(request):
     jobs = []
     result = {}
 
-    # thread = threading.Thread(target=google_request(query_string, result))
-    # jobs.append(thread)
+    thread = threading.Thread(target=google_request(query_string, result))
+    jobs.append(thread)
     thread = threading.Thread(target=duckduckgo_request(query_string, result))
     jobs.append(thread)
     thread = threading.Thread(target=twitter_request(query_string, result))
