@@ -24,8 +24,8 @@ def index(request):
     if(len(response['items'])):
         res_google['text'] = response['items'][0]['title']
         res_google['url'] = response['items'][0]['link']
-    google={}
-    google['google'] = res_google
+    
+    google = res_google
 
     url2 = 'http://api.duckduckgo.com/?q=' + query_string + '&format=json'
     response = requests.get(url2)
