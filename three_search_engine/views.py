@@ -21,8 +21,9 @@ def index(request):
     response = requests.get(url)
     response = response.json()
     res_google = {}
-    res_google['text'] = response['items'][0]['title']
-    res_google['url'] = response['items'][0]['link']
+    if(len(response['items'])):
+        res_google['text'] = response['items'][0]['title']
+        res_google['url'] = response['items'][0]['link']
     google={}
     google['google'] = res_google
 
@@ -30,7 +31,7 @@ def index(request):
     response = requests.get(url2)
     response = response.json()
     res_ddg = {}
-    if(response['RelatedTopics'].length()):
+    if(len(response['RelatedTopics'])):
         res_ddg['text'] = response['RelatedTopics'][0]['Text']
         res_ddg['url'] = response['RelatedTopics'][0]['FirstURL']
     duckduckgo = {}
@@ -51,7 +52,7 @@ def index(request):
     tweets = json.loads(data)
     
     res_twitter = {}
-    if(tweets['statuses'].length()):
+    if(len(tweets['statuses'])):
         res_twitter['text'] = tweets['statuses'][0]['text']
         res_twitter['url'] = tweets['statuses'][0]['entities']['urls']
     twitter={}
