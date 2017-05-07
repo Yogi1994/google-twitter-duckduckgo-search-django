@@ -16,6 +16,7 @@ def index(request):
     query_string = request.GET["q"]
     # response['google']  = 
     # return HttpResponse("Hello, world. You're at the polls index.")
+
     url ='https://www.googleapis.com/customsearch/v1?key=AIzaSyAk_2v_7k4EAG6j4oe-UExvBCSFXm2U0j4&cx=017576662512468239146:omuauf_lfve&q=' + query_string
     response = requests.get(url)
     response = response.json()
@@ -29,9 +30,9 @@ def index(request):
     response = requests.get(url2)
     response = response.json()
     res_ddg = {}
-
-    res_ddg['text'] = response['RelatedTopics'][0]['Text']
-    res_ddg['url'] = response['RelatedTopics'][0]['FirstURL']
+    if(response['RelatedTopics'].length()):
+        res_ddg['text'] = response['RelatedTopics'][0]['Text']
+        res_ddg['url'] = response['RelatedTopics'][0]['FirstURL']
     duckduckgo = {}
     duckduckgo['duckduckgo'] =  res_ddg
 
@@ -50,8 +51,9 @@ def index(request):
     tweets = json.loads(data)
     
     res_twitter = {}
-    res_twitter['text'] = tweets['statuses'][0]['text']
-    res_twitter['url'] = tweets['statuses'][0]['entities']['urls']
+    if(tweets['statuses'].length()):
+        res_twitter['text'] = tweets['statuses'][0]['text']
+        res_twitter['url'] = tweets['statuses'][0]['entities']['urls']
     twitter={}
     twitter['twitter'] = res_twitter
 
