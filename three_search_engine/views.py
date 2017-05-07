@@ -11,7 +11,7 @@ import oauth2 as oauth
 import threading
 
 def google_request(query_string, result):
-    google_url ='https://www.googleapis.com/customsearch/v1?key=AIzaSyAk_2v_7k4EAG6j4oe-UExvBCSFXm2U0j4&cx=017576662512468239146:omuauf_lfve&q=' + query_string
+    google_url ='https://www.googleapis.com/customsearch/v1?key=APIKEY:omuauf_lfve&q=' + query_string
 
     google_response = requests.get(google_url)
     
@@ -41,10 +41,10 @@ def duckduckgo_request(query_string, result):
 def twitter_request(query_string, result):
     twitter_url ='https://api.twitter.com/1.1/search/tweets.json?count=1&q=' + query_string
 
-    CONSUMER_KEY = "MJmhSwcLw5OEvf3Yj5VbIEUBS"
-    CONSUMER_SECRET = "6udAiQT0I6QK2sjkcRABy8Z1cxAtE6RaneU0jOpC3lkYNP5y03"
-    ACCESS_KEY = "211807118-LIhgcDErkXzgBxLDFuIYMVIUv3YqVrCxDb2UImS2"
-    ACCESS_SECRET = "orcuKd13ZSBLPuPwwlHgU9Kyk9IxWEZQda7E3WWEWlF9E"
+    CONSUMER_KEY = "CONSUMER_KEY"
+    CONSUMER_SECRET = "CONSUMER_SECRET"
+    ACCESS_KEY = "ACCESS_KEY"
+    ACCESS_SECRET = "ACCESS_SECRET"
 
     consumer = oauth.Consumer(key=CONSUMER_KEY, secret=CONSUMER_SECRET)
     access_token = oauth.Token(key=ACCESS_KEY, secret=ACCESS_SECRET)
